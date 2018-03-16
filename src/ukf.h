@@ -68,6 +68,7 @@ public:
   double lambda_;
 
 
+
   /**
    * Constructor
    */
@@ -102,6 +103,21 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+private:
+
+  void GenerateSigmaPoints(MatrixXd &Xsig_out);
+
+  void AugmentedSigmaPoints(MatrixXd& Xsig_out);
+
+  void SigmaPointPrediction(MatrixXd &Xsig_aug , double delta_t);
+
+  void PredictMeanAndCovariance(MatrixXd& Xsig_pred);
+
+  void PredictRadarMeasurement(MatrixXd& Xsig_pred, VectorXd& z_out, MatrixXd& S_out, MatrixXd& Zsig_out);
+
+  void UpdateState(MatrixXd &Xsig_pred,MatrixXd &Zsig,
+			VectorXd &z_pred, MatrixXd &S, VectorXd &z);
 };
 
 #endif /* UKF_H */
