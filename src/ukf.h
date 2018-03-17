@@ -116,8 +116,12 @@ private:
 
   void PredictRadarMeasurement(MatrixXd& Xsig_pred, VectorXd& z_out, MatrixXd& S_out, MatrixXd& Zsig_out);
 
-  void UpdateState(MatrixXd &Xsig_pred,MatrixXd &Zsig,
+  void PredictLaserMeasurement(MatrixXd& Xsig_pred, VectorXd& z_out, MatrixXd& S_out, MatrixXd& Zsig_out);
+
+  void UpdateRadarState(MatrixXd &Xsig_pred,MatrixXd &Zsig,
 			VectorXd &z_pred, MatrixXd &S, VectorXd &z);
+  void UpdateLaserState(MatrixXd &Xsig_pred,MatrixXd &Zsig,
+  			VectorXd &z_pred, MatrixXd &S, VectorXd &z);
 };
 
 #endif /* UKF_H */
